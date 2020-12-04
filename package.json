@@ -1,0 +1,23 @@
+{
+  "name": "testTask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edword03/TestTask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edword03/TestTask/issues"
+  },
+  "homepage": "https://github.com/edword03/TestTask#readme",
+  "devDependencies": {
+    "fetch-polyfill": "^0.8.2"
+  }
+}

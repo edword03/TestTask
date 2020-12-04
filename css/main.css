@@ -1,0 +1,30 @@
+img {
+  width: 100%;
+}
+
+.header {
+  border-bottom: 1px solid gray;
+}
+
+.header__title {
+  color: #111111;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group__img {
+  width: 50px;
+}
+
+.item-group__p{
+  text-align: center;
+}
+
+.modal-body p {
+  text-align: center;
+  font-size: 20px;
+}
