@@ -12,37 +12,27 @@ class UserData {
 
   toUper(name){
     return (name[0].toUpperCase() + name.slice(1));
-  };
+  }
 
   render = (item, index) => {
     const {title, first, last} = item.name;
     this.list.insertAdjacentHTML('beforeend', `
-      <li class="list-group-item bg-secondary bg-light">
-        <div class='row'>
-          <div class='col-1'>
-            <span class="list-group__span">${index + 1}</span>
-          </div>
-          <div class='col-1'>
-            <img class="list-group__img" src='${item.picture.medium}' alt="avatar">
-          </div>
-          <div class='col-10'>
-            <p class="item-group__p">${this.toUper(title)}. ${this.toUper(first)} ${this.toUper(last)}</p>
-          </div>
-        </div>
+      <li class="list-group-item">
+        <span class="list-group__span">${index + 1}</span>
+        <img class="list-group__img" src='${item.picture.medium}' alt="avatar">
+        <p class="item-group__p">${this.toUper(title)}. ${this.toUper(first)} ${this.toUper(last)}</p>
       </li> 
     `);
-  };
+  }
 
   sortList = (data, e) => {
     const target = e.target;
-
-    console.log(target.value);
 
     if(target.value === 'A-Z') {
       this.list.textContent = '';
       data.sort((prev, next) => {
         if ( prev.name.first < next.name.first ) return -1;
-        if ( prev.name.first < next.name.first ) return 1;
+        if ( prev.name.first > next.name.first ) return 1;
         return 0;
       })
       .map((item, index) => {
@@ -64,7 +54,7 @@ class UserData {
     const listItems = document.querySelectorAll(listItem);
     let target = e.target;
     target = target.closest(listItem);
-    this.modal.style.display = 'block';
+    this.modal.style.display = 'flex';
 
     if(!target) return;
 
@@ -72,7 +62,6 @@ class UserData {
       if(target === item) {
         this.dataUsers.map((elem, index) => {
           if(index === i) {
-            console.log(elem);
             this.modalBody.insertAdjacentHTML('beforeend', `
               <img src='${elem.picture.large}'/>
               <p>${target.querySelector('p').textContent}</p>
@@ -86,15 +75,14 @@ class UserData {
             `);
           }
         });
-
       }
     });
-  };
+  }
 
   closeModal = (e) => {
     const target = e.target;
 
-    if(target.matches('.btn, .close span')) {
+    if(target.matches('.close span, .modal-close')) {
       this.modal.style.display = 'none';
       this.modalBody.textContent = '';
     }
@@ -124,8 +112,8 @@ class UserData {
       })
       .catch(err => console.error(err));
 
-      this.listeners()
-  };
+      this.listeners();
+  }
 
 };
 
